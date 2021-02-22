@@ -64,14 +64,17 @@ function createRosterHTML(response) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Custom Roster</title>
     </head>
+    <header>
+    <h1 class="myteam">My Team
+    </header>
     <body>
     <div>
-    <div class="container">
-    <p class="manager">Team Manager: ${response.teammanager}</p>
-    <p class="id">Employee ID: ${response.id}</p>
-    <p class="officenumber">Office #: ${response.officenumber}</p>  <br>
-    <a class="email" href="mailto:${response.email}">Email: ${response.email}</a>
-    </div>
+        <div class="container">
+            <p class="manager">Team Manager: ${response.teammanager}</p>
+            <p class="id">Employee ID: ${response.id}</p>
+            <p class="officenumber">Office #: ${response.officenumber}</p>  <br>
+            <a class="email" href="mailto:${response.email}">Email: ${response.email}</a>
+        </div>
     </div>
     </body>
     </html>
