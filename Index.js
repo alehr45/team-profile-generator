@@ -190,8 +190,10 @@ function addTeamMembers() {
        case "Yes, add an intern":
           addIntern();
           break;
+        
       
       }
+      console.log(completedTeam)
     })
 };
 
@@ -235,5 +237,7 @@ function addTeamMembers() {
 //   }
 // }
 
+
 // makeRoster();
+
 teamName();
