@@ -1,7 +1,5 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const util = require("util");
-const writeFile = util.promisify(fs.writeFile);
 
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
@@ -13,19 +11,20 @@ function teamName() {
   inquirer
     .prompt([
       {
-        message: "Welcome to the Team Roster Creator 1.0. Please type in your teams name",
+        message:
+          "Welcome to the Team Roster Creator 1.0. Please type in your teams name",
         name: "teamName",
       },
     ])
     .then(function (data) {
       const teamName = data.teamName;
-      completedTeam.push(teamName)
+      completedTeam.push(teamName);
       addManager();
     });
 }
 
 function addManager() {
-   inquirer
+  inquirer
     .prompt([
       {
         type: "input",
@@ -78,55 +77,10 @@ function addManager() {
 }
 
 function addEngineer() {
-  inquirer.prompt([
-    {
-      message: "What is this engineer's name?",
-      name: "name",
-      validate: function (answer) {
-        if (answer.length < 1) {
-          return console.log("A valid name is required.");
-        }
-        return true;
-      },
-    },
-    {
-      message: "What is this engineer's email address?",
-      name: "email",
-      validate: function (answer) {
-        if (answer.length < 1) {
-          return console.log("A valid email address is required.");
-        }
-        return true;
-      },
-    },
-    {
-      message: "What is this engineer's Github profile?",
-      name: "github",
-      validate: function (answer) {
-        if (answer.length < 1) {
-          return console.log("A valid Github is required.");
-        }
-        return true;
-      },
-    },
-  ])
-    
-    .then(function (data) {
-      const name = data.name;
-      const id = completedTeam.length + 1;
-      const email = data.email;
-      const github = data.github;
-      const teamMember = new Engineer(name, id, email, github);
-      completedTeam.push(teamMember);
-      addTeamMembers();
-    });
-  };
-
-function addIntern() {
   inquirer
     .prompt([
       {
-        message: "What is this intern's name?",
+        message: "What is the engineer's name?",
         name: "name",
         validate: function (answer) {
           if (answer.length < 1) {
@@ -136,7 +90,53 @@ function addIntern() {
         },
       },
       {
-        message: "What is this intern's email address?",
+        message: "What is the engineer's email address?",
+        name: "email",
+        validate: function (answer) {
+          if (answer.length < 1) {
+            return console.log("A valid email address is required.");
+          }
+          return true;
+        },
+      },
+      {
+        message: "What is the engineer's Github profile?",
+        name: "github",
+        validate: function (answer) {
+          if (answer.length < 1) {
+            return console.log("A valid Github is required.");
+          }
+          return true;
+        },
+      },
+    ])
+
+    .then(function (data) {
+      const name = data.name;
+      const id = completedTeam.length + 1;
+      const email = data.email;
+      const github = data.github;
+      const teamMember = new Engineer(name, id, email, github);
+      completedTeam.push(teamMember);
+      addTeamMembers();
+    });
+}
+
+function addIntern() {
+  inquirer
+    .prompt([
+      {
+        message: "What is the intern's name?",
+        name: "name",
+        validate: function (answer) {
+          if (answer.length < 1) {
+            return console.log("A valid name is required.");
+          }
+          return true;
+        },
+      },
+      {
+        message: "What is the intern's email address?",
         name: "email",
         validate: function (answer) {
           if (answer.length < 1) {
@@ -146,7 +146,7 @@ function addIntern() {
         },
       },
       {
-        message: "What is this intern's school?",
+        message: "What is the intern's school?",
         name: "school",
         validate: function (answer) {
           if (answer.length < 1) {
@@ -173,69 +173,72 @@ function addTeamMembers() {
     .prompt([
       {
         type: "list",
-        message: "Would you like to add more team members?",
+        message: "Would you like to add any more team members?",
         choices: [
-          "Yes, add an engineer",
-          "Yes, add an intern",
+          "Yes, I would like to add an engineer",
+          "Yes, I would like to add an intern",
           "No, my team is complete",
         ],
-      name: "addTeamData",
+        name: "addTeamData",
       },
     ])
     .then(function (data) {
       switch (data.addTeamData) {
-        case "Yes, add an engineer":
+        case "Yes, I would like to add an engineer":
           addEngineer();
           break;
-       case "Yes, add an intern":
+        case "Yes, I would like to add an intern":
           addIntern();
           break;
-        
-      
+
+        case "No, my team is complete":
+          createRosterHTML();
+          break;
       }
-      console.log(completedTeam)
-    })
-};
+    });
+}
 
-// function createRosterHTML(response) {
-//   return `
-//     <!DOCTYPE html>
-//     <html lang="en">
-//     <head>
-//     <link rel="stylesheet" href="style.css">
-//         <meta charset="UTF-8">
-//         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//         <title>My Custom Roster</title>
-//     </head>
-//     <header>
-//     <h1 class="myteam">My Team
-//     </header>
-//     <body>
-//     <div>
-//         <div class="container">
-//             <p class="manager">Team Manager: ${response.teammanager}</p>
-//             <p class="id">Employee ID: ${response.id}</p>
-//             <p class="officenumber">Office #: ${response.officenumber}</p>  <br>
-//             <a class="email" href="mailto:${response.email}">Email: ${response.email}</a>
-//         </div>
-//     </div>
-//     </body>
-//     </html>
+function createRosterHTML() {
+  console.log("You have successfully created your new team roster. Congrats!");
+ const rosterStart = `
+  <!DOCTYPE html>
+  <html lang="en">
 
-//     `;
-// }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>${completedTeam[0]}</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
 
-// async function makeRoster() {
-//   try {
-//     const response = await addManager();
-//     const roster = createRosterHTML(response);
-//     await writeFile("teamroster.html", roster);
-//     console.log("Your team roster has been generated! Congratulations!");
-//   } catch (err) {
-//     console.log("Something went wrong!");
-//   }
-// }
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">${completedTeam[0]}</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+<body>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">${completedTeam[0]}.name.</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Card Text 1</p>
+    <p class="card-text">Card Text 1</p>
+</div>
+</body>
+
+
+
+
+
+`;
+
+fs.writeFile(`./ ${completedTeam[0]}.html`, rosterStart , function (err) {
+        
+})
+}
 
 
 // makeRoster();
