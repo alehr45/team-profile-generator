@@ -263,7 +263,9 @@ function createRosterHTML() {
   <h5 class="card-title ">${completedTeam[i].getName()}</h5>
   <p class="card-text">${completedTeam[i].getRole()}</p>
   <p class="card-text">Employee ID: ${completedTeam[i].getId()}</p>
-  <p class="card-text">Email: <a href="mailto:${completedTeam[i].getEmail()}">${completedTeam[i].getEmail()}</a></p>
+  <p class="card-text">Email: <a href="mailto:${completedTeam[
+    i
+  ].getEmail()}">${completedTeam[i].getEmail()}</a></p>
   
   `;
     if (completedTeam[i].github) {
@@ -289,6 +291,12 @@ function createRosterHTML() {
 `;
     htmlArray.push(card);
   }
+  const htmlFooter = `
+  <footer>
+<p class="footer">Copyright &copy
+</footer>
+    `
+    htmlArray.push(htmlFooter);
 
   fs.writeFile(
     `./finishedHTML/ ${completedTeam[0]}.html`,
@@ -297,6 +305,6 @@ function createRosterHTML() {
   );
 }
 
-// makeRoster();
+
 
 teamName();
