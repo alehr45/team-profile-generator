@@ -11,3 +11,15 @@ test("Can get email with getEmail()", () => {
   const newManager = new Manager("Alex", 1, testValue);
   expect(newManager.getEmail()).toBe(testValue);
 });
+
+test("getRole() should return \"Manager\"", () => {
+  const testValue = "Manager";
+  const newManager = new Manager("Alex", 1, "test@test.com", "MIT");
+  expect(newManager.getRole()).toBe(testValue);
+});
+
+test("Can get id with getId()", () => {
+  const testValue = 50;
+  const newManager = new Manager("Alex", testValue);
+  expect(newManager.getId()).toBe(testValue);
+});

@@ -19,5 +19,18 @@ background-color: rgb(5, 153, 203);
 }
 
 .container-fluid {
-    background-color: rgb(55, 55, 55);
+    background-color: rgb(75, 74, 74);
+}
+
+.card-text {
+font-weight: 400;
+}
+
+.role {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.name {
+font-size: 30px;
 }

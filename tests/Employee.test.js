@@ -17,3 +17,9 @@ test("Can get id with getId()", () => {
   const newEmployee = new Employee("Alex", testValue);
   expect(newEmployee.getId()).toBe(testValue);
 });
+
+test("getRole() should return \"Employee\"", () => {
+  const testValue = "Employee";
+  const newEmployee = new Employee("Alex", 1, "test@test.com", "MIT");
+  expect(newEmployee.getRole()).toBe(testValue);
+});

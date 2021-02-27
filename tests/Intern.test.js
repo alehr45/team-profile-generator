@@ -17,3 +17,9 @@ test("Can set a name for new intern", () => {
     const newIntern = new Intern("Alex", 1, "test@test.com", "MIT");
     expect(newIntern.getRole()).toBe(testValue);
   });
+
+  test("Can get id with getId()", () => {
+    const testValue = 50;
+    const newIntern = new Intern("Alex", testValue);
+    expect(newIntern.getId()).toBe(testValue);
+  });

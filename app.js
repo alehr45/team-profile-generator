@@ -260,8 +260,8 @@ function createRosterHTML() {
   <div class="card-columns mx-auto">
   <div class="card text-center">
   <div class="card-body">
-  <h5 class="card-title ">${completedTeam[i].getName()}</h5>
-  <p class="card-text">${completedTeam[i].getRole()}</p>
+  <h5 class="name card-title ">${completedTeam[i].getName()}</h5>
+  <p class="role card-text">--${completedTeam[i].getRole()}--</p>
   <p class="card-text">Employee ID: ${completedTeam[i].getId()}</p>
   <p class="card-text">Email: <a href="mailto:${completedTeam[
     i
