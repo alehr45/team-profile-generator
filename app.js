@@ -5,7 +5,6 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
-
 let completedTeam = [];
 
 function teamName() {
@@ -91,6 +90,16 @@ function addEngineer() {
         },
       },
       {
+        message: "What is the engineer's employee ID?",
+        name: "id",
+        validate: function (answer) {
+          if (answer.length < 1) {
+            return console.log("A valid number is required.");
+          }
+          return true;
+        },
+      },
+      {
         message: "What is the engineer's email address?",
         name: "email",
         validate: function (answer) {
@@ -114,7 +123,7 @@ function addEngineer() {
 
     .then(function (data) {
       const name = data.name;
-      const id = completedTeam.length + 1;
+      const id = data.id;
       const email = data.email;
       const github = data.github;
       const teamMember = new Engineer(name, id, email, github);
@@ -126,6 +135,26 @@ function addEngineer() {
 function addIntern() {
   inquirer
     .prompt([
+      {
+        message: "What is the intern's name?",
+        name: "name",
+        validate: function (answer) {
+          if (answer.length < 1) {
+            return console.log("A valid name is required.");
+          }
+          return true;
+        },
+      },
+      {
+        message: "What is the intern's employee ID?",
+        name: "id",
+        validate: function (answer) {
+          if (answer.length < 1) {
+            return console.log("A valid number is required.");
+          }
+          return true;
+        },
+      },
       {
         message: "What is the intern's name?",
         name: "name",
@@ -160,7 +189,7 @@ function addIntern() {
 
     .then(function (data) {
       const name = data.name;
-      const id = completedTeam.length + 1;
+      const id = data.id;
       const email = data.email;
       const school = data.school;
       const teamMember = new Intern(name, id, email, school);
@@ -200,9 +229,9 @@ function addTeamMembers() {
 }
 
 function createRosterHTML() {
-console.log("You have successfully created your new team roster. Congrats!");
-const htmlArray = []
-const roster1 = `
+  console.log("You have successfully created your new team roster. Congrats!");
+  const htmlArray = [];
+  const roster1 = `
   <!DOCTYPE html>
   <html lang="en">
 
@@ -221,37 +250,52 @@ const roster1 = `
   </div>
 </div>
 
-`
-htmlArray.push(roster1);
+`;
+  htmlArray.push(roster1);
 
-for (let i = 1; i < completedTeam.length; i++) {
-  let card = `
+  for (let i = 1; i < completedTeam.length; i++) {
+    let card = `
   <main role="main">
   <div class="container-fluid">
-      <div class="card-columns mx-auto">
-          <div class="card text-center">
-                    <div class="card-body">
-                      <h5 class="card-title">${completedTeam[i].getName()}</h5>
-                      <p class="card-text role">${completedTeam[i].getRole()}.</p>
-                      <p class="card-text"><small class="text-muted">Employee ID: ${completedTeam[i].getId()}</small></p>
-                      <p class="card-text"><small class="text-muted">Email: ${completedTeam[i].getEmail()}</small></p>
-                      <p class="card-text"><small class="text-muted">Office Number: ${completedTeam[i].officeNumber}</small></p>
-                    
-                    </div>
-                </div>
-                  
-              </div>
+  <div class="card-columns mx-auto">
+  <div class="card text-center">
+  <div class="card-body">
+  <h5 class="card-title ">${completedTeam[i].getName()}</h5>
+  <p class="card-text">${completedTeam[i].getRole()}</p>
+  <p class="card-text">Employee ID: ${completedTeam[i].getId()}</p>
+  <p class="card-text">Email: <a href="mailto:${completedTeam[i].getEmail()}">${completedTeam[i].getEmail()}</a></p>
+  
+  `;
+    if (completedTeam[i].github) {
+      card += `
+  <p class="card-text">GitHub: <a href="https://github.com/${completedTeam[i].github}" target="_blank">${completedTeam[i].github}</a></p>
+  `;
+    }
+    if (completedTeam[i].school) {
+      card += `
+  <p>School: ${completedTeam[i].school}</p>
+  `;
+    }
+    if (completedTeam[i].officeNumber) {
+      card += `
+  <p class="card-text">Office Number: ${completedTeam[i].officeNumber}</p>
+  `;
+    }
+    card += `
+</div>
+</div>
+</div>
+</div>
+`;
+    htmlArray.push(card);
+  }
 
-        </div>
-</main>
-`
-htmlArray.push(card)};
-
-fs.writeFile(`./finishedHTML/ ${completedTeam[0]}.html`, htmlArray.join(""), function (err) {
-        
-})
-};
-
+  fs.writeFile(
+    `./finishedHTML/ ${completedTeam[0]}.html`,
+    htmlArray.join(""),
+    function (err) {}
+  );
+}
 
 // makeRoster();
 
