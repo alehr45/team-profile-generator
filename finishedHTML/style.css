@@ -1,0 +1,11 @@
+.card {
+    display: flex;
+    justify-content: right;
+   
+}
+
+
+.jumbotron {
+text-align: center;
+background-color: lightblue;
+}

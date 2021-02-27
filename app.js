@@ -1,10 +1,11 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+
+
 let completedTeam = [];
 
 function teamName() {
@@ -199,8 +200,9 @@ function addTeamMembers() {
 }
 
 function createRosterHTML() {
-  console.log("You have successfully created your new team roster. Congrats!");
- const rosterStart = `
+console.log("You have successfully created your new team roster. Congrats!");
+const htmlArray = []
+const roster1 = `
   <!DOCTYPE html>
   <html lang="en">
 
@@ -209,36 +211,46 @@ function createRosterHTML() {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>${completedTeam[0]}</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">${completedTeam[0]}</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    
   </div>
 </div>
 
-<body>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">${completedTeam[0]}.name.</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Card Text 1</p>
-    <p class="card-text">Card Text 1</p>
-</div>
-</body>
+`
+htmlArray.push(roster1);
 
+for (let i = 1; i < completedTeam.length; i++) {
+  let card = `
+  <main role="main">
+  <div class="container-fluid">
+      <div class="card-columns mx-auto">
+          <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">${completedTeam[i].getName()}</h5>
+                      <p class="card-text role">${completedTeam[i].getRole()}.</p>
+                      <p class="card-text"><small class="text-muted">Employee ID: ${completedTeam[i].getId()}</small></p>
+                      <p class="card-text"><small class="text-muted">Email: ${completedTeam[i].getEmail()}</small></p>
+                      <p class="card-text"><small class="text-muted">Office Number: ${completedTeam[i].officeNumber}</small></p>
+                    
+                    </div>
+                </div>
+                  
+              </div>
 
+        </div>
+</main>
+`
+htmlArray.push(card)};
 
-
-
-`;
-
-fs.writeFile(`./ ${completedTeam[0]}.html`, rosterStart , function (err) {
+fs.writeFile(`./finishedHTML/ ${completedTeam[0]}.html`, htmlArray.join(""), function (err) {
         
 })
-}
+};
 
 
 // makeRoster();
