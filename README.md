@@ -1,2 +1,2 @@
 # team-profile-generator
-![Alt text](/screenshot1.jpg?raw=true "Optional Title")
+![Alt text](/screenshot1.png?raw=true "Optional Title")
