@@ -19,7 +19,11 @@
 A quick way to create a team roster HTML file including user input data.
 
 ### **Installation**  
-1. Clone GitHub repository to your local device. 2. Run node app in the repo's directory. Follow Inquirer prompts. 3. When completed, check finishedHTML folder for finished roster. 4. Enjoy!
+1. Clone GitHub repository to your local device. 
+2. Run node app in the repo's directory. 
+3. Follow Inquirer prompts. 
+4. When completed, check finishedHTML folder for finished roster.
+5. Enjoy!
 
 ### **Usage**  
 
