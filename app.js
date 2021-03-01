@@ -1,6 +1,5 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
@@ -12,7 +11,7 @@ function teamName() {
     .prompt([
       {
         message:
-          "Welcome to the Team Roster Creator 1.0. Please type in your teams name",
+          "Welcome to the Team Profile Generator 1.0. Please type in your teams name",
         name: "teamName",
       },
     ])
@@ -264,10 +263,7 @@ function createRosterHTML() {
   <h5 class="name card-title ">${completedTeam[i].getName()}</h5>
   <p class="role card-text">--${completedTeam[i].getRole()}--</p>
   <p class="card-text">Employee ID: ${completedTeam[i].getId()}</p>
-  <p class="card-text">Email: <a href="mailto:${completedTeam[
-    i
-  ].getEmail()}">${completedTeam[i].getEmail()}</a></p>
-  
+  <p class="card-text">Email: <a href="mailto:${completedTeam[i].getEmail()}">${completedTeam[i].getEmail()}</a></p>
   `;
     if (completedTeam[i].github) {
       card += `
