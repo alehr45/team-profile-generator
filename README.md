@@ -16,8 +16,6 @@
 
 ![Alt text](/screenshot2.png?raw=true "Optional Title")
 
-![Alt text](/screenshot3.png?raw=true "Optional Title")
-
 ### **Description**  
 A quick way to create a team roster HTML file including user input data.
 
@@ -37,6 +35,10 @@ https://drive.google.com/file/d/18T-va1c-Ht0qoCeNUeZseKS0mEEsQz7H/view
 
 ### **Testing**  
 Jest
+
+
+![Alt text](/screenshot3.png?raw=true "Optional Title")
+
 
 ========================
 
