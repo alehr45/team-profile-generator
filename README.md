@@ -15,6 +15,10 @@
 
 ![Alt text](/screenshot1.png?raw=true "Optional Title")
 
+![Alt text](/screenshot2.png?raw=true "Optional Title")
+
+![Alt text](/screenshot3.png?raw=true "Optional Title")
+
 ### **Description**  
 A quick way to create a team roster HTML file including user input data.
 
