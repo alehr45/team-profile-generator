@@ -29,7 +29,7 @@ A quick way to create a team roster HTML file including user input data.
 5. Enjoy!
 
 ### **Usage**  
-https://drive.google.com/file/d/1FleJQ8bON66Vu8cSOGo3UQ_2GL5eXGtu/view
+https://drive.google.com/file/d/18T-va1c-Ht0qoCeNUeZseKS0mEEsQz7H/view
 
 
 ### **Contributors**  
