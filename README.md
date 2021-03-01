@@ -8,7 +8,6 @@
 * [Installation](#installation)
 * [Contributors](#contributors)
 * [Testing](#Testing)
-* [Licensing](#Licenses)
 * [Contact](#questions)
 
 ========================
@@ -37,17 +36,11 @@ https://drive.google.com/file/d/1FleJQ8bON66Vu8cSOGo3UQ_2GL5eXGtu/view
 @alehr45
 
 ### **Testing**  
-N/A
-
-### **License**  
-![badge](https://img.shields.io/badge/license-MIT-brightgreen)  
-
-This application is covered by the MIT license. 
+Jest
 
 ========================
 
 ### Questions?
-##### Email: alehr45@gmail.com
 ##### GitHub: www.github.com/alehr45  
 
 ========================
