@@ -30,7 +30,7 @@ A quick way to create a team roster HTML file including user input data.
 5. Enjoy!
 
 ### **Usage**  
-![Alt text](/video.webm?raw=true "Optional Title")
+https://drive.google.com/file/d/1FleJQ8bON66Vu8cSOGo3UQ_2GL5eXGtu/view
 
 
 ### **Contributors**  
