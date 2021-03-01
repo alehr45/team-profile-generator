@@ -30,7 +30,7 @@ A quick way to create a team roster HTML file including user input data.
 5. Enjoy!
 
 ### **Usage**  
-<iframe src="https://drive.google.com/file/d/1FleJQ8bON66Vu8cSOGo3UQ_2GL5eXGtu/preview" width="640" height="480"></iframe>
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
 
 
 ### **Contributors**  
